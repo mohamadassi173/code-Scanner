@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/cheer/Desktop/code_scanner/code-Scanner/main.cpp" "C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/CMakeFiles/code_Scanner.dir/main.cpp.obj"
-  "C:/Users/cheer/Desktop/code_scanner/code-Scanner/scanner.cpp" "C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/CMakeFiles/code_Scanner.dir/scanner.cpp.obj"
-  "C:/Users/cheer/Desktop/code_scanner/code-Scanner/symtab.cpp" "C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/CMakeFiles/code_Scanner.dir/symtab.cpp.obj"
-  "C:/Users/cheer/Desktop/code_scanner/code-Scanner/token.cpp" "C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/CMakeFiles/code_Scanner.dir/token.cpp.obj"
+  "/home/mohamadassi/CLionProjects/code-Scanner/main.cpp" "/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/CMakeFiles/code_Scanner.dir/main.cpp.o"
+  "/home/mohamadassi/CLionProjects/code-Scanner/scanner.cpp" "/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/CMakeFiles/code_Scanner.dir/scanner.cpp.o"
+  "/home/mohamadassi/CLionProjects/code-Scanner/symtab.cpp" "/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/CMakeFiles/code_Scanner.dir/symtab.cpp.o"
+  "/home/mohamadassi/CLionProjects/code-Scanner/token.cpp" "/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/CMakeFiles/code_Scanner.dir/token.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

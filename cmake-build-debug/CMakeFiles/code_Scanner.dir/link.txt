@@ -1,3 +1,1 @@
-"C:\Program Files\JetBrains\CLion 2020.1.1\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\code_Scanner.dir/objects.a
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\code_Scanner.dir/objects.a @CMakeFiles\code_Scanner.dir\objects1.rsp
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE -g   -Wl,--whole-archive CMakeFiles\code_Scanner.dir/objects.a -Wl,--no-whole-archive  -o code_Scanner.exe -Wl,--out-implib,libcode_Scanner.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\code_Scanner.dir\linklibs.rsp
+/usr/bin/c++ -g CMakeFiles/code_Scanner.dir/main.cpp.o CMakeFiles/code_Scanner.dir/scanner.cpp.o CMakeFiles/code_Scanner.dir/symtab.cpp.o CMakeFiles/code_Scanner.dir/token.cpp.o -o code_Scanner 

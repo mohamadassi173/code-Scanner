@@ -8,114 +8,118 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug"/>
+				<Option working_dir="/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="code_Scanner">
-				<Option output="C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/code_Scanner.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="C:/Users/cheer/Desktop/code_scanner/code-Scanner/."/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 code_Scanner"/>
-					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="code_Scanner/fast">
-				<Option output="C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/code_Scanner.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="C:/Users/cheer/Desktop/code_scanner/code-Scanner/."/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 code_Scanner/fast"/>
-					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug"/>
+				<Option working_dir="/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="code_Scanner">
+				<Option output="/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/code_Scanner" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/mohamadassi/CLionProjects/code-Scanner/."/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 code_Scanner"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="code_Scanner/fast">
+				<Option output="/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/code_Scanner" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/mohamadassi/CLionProjects/code-Scanner/."/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 code_Scanner/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/cheer/Desktop/code_scanner/code-Scanner/C.l">
+		<Unit filename="/home/mohamadassi/CLionProjects/code-Scanner/C.l">
 			<Option target="code_Scanner"/>
 		</Unit>
-		<Unit filename="C:/Users/cheer/Desktop/code_scanner/code-Scanner/main.cpp">
+		<Unit filename="/home/mohamadassi/CLionProjects/code-Scanner/main.cpp">
 			<Option target="code_Scanner"/>
 		</Unit>
-		<Unit filename="C:/Users/cheer/Desktop/code_scanner/code-Scanner/reserved.txt">
+		<Unit filename="/home/mohamadassi/CLionProjects/code-Scanner/reserved.txt">
 			<Option target="code_Scanner"/>
 		</Unit>
-		<Unit filename="C:/Users/cheer/Desktop/code_scanner/code-Scanner/scanner.cpp">
+		<Unit filename="/home/mohamadassi/CLionProjects/code-Scanner/scanner.cpp">
 			<Option target="code_Scanner"/>
 		</Unit>
-		<Unit filename="C:/Users/cheer/Desktop/code_scanner/code-Scanner/scanner.h">
+		<Unit filename="/home/mohamadassi/CLionProjects/code-Scanner/scanner.h">
 			<Option target="code_Scanner"/>
 		</Unit>
-		<Unit filename="C:/Users/cheer/Desktop/code_scanner/code-Scanner/symtab.cpp">
+		<Unit filename="/home/mohamadassi/CLionProjects/code-Scanner/symtab.cpp">
 			<Option target="code_Scanner"/>
 		</Unit>
-		<Unit filename="C:/Users/cheer/Desktop/code_scanner/code-Scanner/symtab.h">
+		<Unit filename="/home/mohamadassi/CLionProjects/code-Scanner/symtab.h">
 			<Option target="code_Scanner"/>
 		</Unit>
-		<Unit filename="C:/Users/cheer/Desktop/code_scanner/code-Scanner/token.cpp">
+		<Unit filename="/home/mohamadassi/CLionProjects/code-Scanner/token.cpp">
 			<Option target="code_Scanner"/>
 		</Unit>
-		<Unit filename="C:/Users/cheer/Desktop/code_scanner/code-Scanner/token.h">
+		<Unit filename="/home/mohamadassi/CLionProjects/code-Scanner/token.h">
 			<Option target="code_Scanner"/>
 		</Unit>
-		<Unit filename="C:/Users/cheer/Desktop/code_scanner/code-Scanner/tokenstrings.h">
+		<Unit filename="/home/mohamadassi/CLionProjects/code-Scanner/tokenstrings.h">
 			<Option target="code_Scanner"/>
 		</Unit>
-		<Unit filename="C:/Users/cheer/Desktop/code_scanner/code-Scanner/tokentype.h">
+		<Unit filename="/home/mohamadassi/CLionProjects/code-Scanner/tokentype.h">
 			<Option target="code_Scanner"/>
 		</Unit>
-		<Unit filename="C:/Users/cheer/Desktop/code_scanner/code-Scanner/CMakeLists.txt">
+		<Unit filename="/home/mohamadassi/CLionProjects/code-Scanner/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -1,3 +1,3 @@
-C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/CMakeFiles/code_Scanner.dir
-C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/cheer/Desktop/code_scanner/code-Scanner/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/mohamadassi/CLionProjects/code-Scanner/cmake-build-debug/CMakeFiles/code_Scanner.dir

@@ -2,17 +2,21 @@
 #include "token.h"
 #include "tokenstrings.h"
 
-//Getters
-tokenType Token::getType(){return type;}
-string Token::getText(){return text;}
+tokenType Token::getType(){
+    return type;
+}
 
 void Token::printToken(){
-    string token = text;
+    string temp_text = text;
     if(type >= IDENTIFIER){
-        token = tokenStrings[type - IDENTIFIER];
+        text = tokenStrings[type - IDENTIFIER];
     }
+    cout << text << "\t" << text << endl;
+    text = temp_text;
+}
 
-    cout << token << "\t" << text << endl;
+string Token::getText(){
+    return text;
 }
 
 void varToken::add_line(int l){
