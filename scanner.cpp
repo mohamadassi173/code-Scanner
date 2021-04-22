@@ -2,38 +2,8 @@
 #include <cctype>
 #include <memory>
 
-#define HANDLE_DOUBLE_OPERATOR(second_op, tt, text)
-    {
-        if(inputFile.peek() == second_op){
-            nextChar();
-            return shared_ptr<Token> (new Token(tt, text));
-        }else{
-            goto single_char;
-        }
-    }
-
 shared_ptr<Token> Scanner:: nextToken(){
     string text;
-
-    /*
-     * I'm using lambada expression since i can't declare private functions
-     * (header structure including members and function has been predetermined)
-     */
-    // passing 'this' in order to access class's methods
-    auto comment = [this](){
-        char c, prev = 0;
-        while (nextChar()){
-            c = ch;
-            if (c == '/' && prev == '*'){
-                return;
-            }
-            prev = c;
-        }
-    };
-
-    auto comment_line = [this](){
-        while (nextChar() && ch != '\n');
-    };
 
     auto read_token = [this](regex pattern){
         string token = "";
@@ -76,16 +46,20 @@ shared_ptr<Token> Scanner:: nextToken(){
     };
 
     while(nextChar()) {
-        //Check for start of comment /*
         if(ch == '/'){
-            nextChar();//Read next char
+            nextChar();
             if(ch == '*'){
-                //Current state is inside /* comment
-                comment();
+                char c, prev = 0;
+                while (nextChar()){
+                    c = ch;
+                    if (c == '/' && prev == '*'){
+                        break;
+                    }
+                    prev = c;
+                }
             }
             if(ch == '/'){
-                //Current state is inside line comment (//)
-                comment_line();
+                while (nextChar() && ch != '\n');
             }
         }
 
@@ -93,9 +67,14 @@ shared_ptr<Token> Scanner:: nextToken(){
             continue;
         }
 
-        switch (ch) { // each character represents itself
+        switch (ch) {
             case '+' :
-            HANDLE_DOUBLE_OPERATOR('+', INC_OP, "++")
+                if(inputFile.peek() == '+'){
+                    nextChar();
+                    return shared_ptr<Token> (new Token(INC_OP, "++"));
+                } else {
+                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
+                }
             case '-' :
                 if(inputFile.peek() == '-'){
                     nextChar();
@@ -104,25 +83,55 @@ shared_ptr<Token> Scanner:: nextToken(){
                     nextChar();
                     return make_shared<Token> (PTR_OP, "->");
                 }
-                goto single_char;
+                return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
 
             case '&' :
-            HANDLE_DOUBLE_OPERATOR('&', AND_OP, "&&")
+                if(inputFile.peek() == '&'){
+                    nextChar();
+                    return shared_ptr<Token> (new Token(AND_OP, "&&"));
+                }else{
+                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
+                }
             case '|' :
-            HANDLE_DOUBLE_OPERATOR('|', OR_OP, "||")
+                if(inputFile.peek() == '|'){
+                    nextChar();
+                    return shared_ptr<Token> (new Token(OR_OP, "||"));
+                }else{
+                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
+                }
             case '<' :
-            HANDLE_DOUBLE_OPERATOR('=', LE_OP, "<=")
+                if(inputFile.peek() == '='){
+                    nextChar();
+                    return shared_ptr<Token> (new Token(LE_OP, "<="));
+                }else{
+                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
+                }
             case '>' :
-            HANDLE_DOUBLE_OPERATOR('=', GE_OP, ">=")
+                if(inputFile.peek() == '='){
+                    nextChar();
+                    return shared_ptr<Token> (new Token(GE_OP, ">="));
+                }else{
+                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
+                }
             case '=' :
-            HANDLE_DOUBLE_OPERATOR('=', EQ_OP, "==")
+                if(inputFile.peek() == '='){
+                    nextChar();
+                    return shared_ptr<Token> (new Token(EQ_OP, "=="));
+                }else{
+                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
+                }
             case '!' :
-            HANDLE_DOUBLE_OPERATOR('=', NE_OP, "!=")
+                if(inputFile.peek() == '='){
+                    nextChar();
+                    return shared_ptr<Token> (new Token(NE_OP, "!="));
+                }else{
+                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
+                }
             case '.':
                 if(isdigit(inputFile.peek())){
                     break;
                 }
-                goto single_char;
+                return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
 
             case ';' :
             case '{' :
@@ -139,7 +148,6 @@ shared_ptr<Token> Scanner:: nextToken(){
             case '%' :
             case '^' :
             case '?' :
-            single_char:
                 return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
         }
 
