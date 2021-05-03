@@ -1,227 +1,196 @@
+#include <regex>
 #include "scanner.h"
-#include <cctype>
-#include <memory>
 
-shared_ptr<Token> Scanner:: nextToken(){
-    string text;
+shared_ptr<Token> Scanner::nextToken()
+{
 
-    auto read_token = [this](regex pattern){
-        string token = "";
-        while(nextChar() && regex_match(string(1,ch), pattern)){
-            token += ch;
+    while (nextChar())
+    {
+        char comment;
+        if(ch != 13 && ch != ' ' && ch != '\n' && ch != '\t' && ch != '/'){
+            break;
         }
-        inputFile.unget();//return last read character to the file
-
-        return token;
-    };
-
-    //passing read_token in order to call read_token
-    auto read_number = [read_token](){
-        return read_token(regex(R"([0-9Ee+\-.])"));
-    };
-
-    auto read_word = [read_token](){
-        return read_token(regex(R"([\w\d])"));
-    };
-
-    auto read_char = [this](){
-        string ch_str = "";
-        if(nextChar()){
-            ch_str = ch;
-        }
-        if(!(nextChar() && ch == '\'')){
-            ch_str = "";
-        }
-
-        return ch_str;
-    };
-
-    auto read_string = [this](){
-        string str = "";
-        while(nextChar() && ch != '\"'){
-            str += ch;
-        }
-
-        return str;
-    };
-
-    while(nextChar()) {
-        if(ch == '/'){
-            nextChar();
-            if(ch == '*'){
-                char c, prev = 0;
-                while (nextChar()){
-                    c = ch;
-                    if (c == '/' && prev == '*'){
-                        break;
-                    }
-                    prev = c;
-                }
+        if(ch == '/') nextChar();
+        comment = 'a';
+        if (ch == '*') {
+            char prev;
+            while (nextChar()) {
+                comment = 's';
+                if (ch == '/' && prev == '*') break;
+                prev = ch;
             }
-            if(ch == '/'){
-                while (nextChar() && ch != '\n');
-            }
-        }
-
-        if (ch == ' ' || ch == '\r' || ch == '\n') {
             continue;
         }
 
-        switch (ch) {
-            case '+' :
-                if(inputFile.peek() == '+'){
-                    nextChar();
-                    return shared_ptr<Token> (new Token(INC_OP, "++"));
-                } else {
-                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
-                }
-            case '-' :
-                if(inputFile.peek() == '-'){
-                    nextChar();
-                    return make_shared<Token> (DEC_OP, "--");
-                } else if(inputFile.peek() == '>'){
-                    nextChar();
-                    return make_shared<Token> (PTR_OP, "->");
-                }
-                return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
-
-            case '&' :
-                if(inputFile.peek() == '&'){
-                    nextChar();
-                    return shared_ptr<Token> (new Token(AND_OP, "&&"));
-                }else{
-                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
-                }
-            case '|' :
-                if(inputFile.peek() == '|'){
-                    nextChar();
-                    return shared_ptr<Token> (new Token(OR_OP, "||"));
-                }else{
-                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
-                }
-            case '<' :
-                if(inputFile.peek() == '='){
-                    nextChar();
-                    return shared_ptr<Token> (new Token(LE_OP, "<="));
-                }else{
-                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
-                }
-            case '>' :
-                if(inputFile.peek() == '='){
-                    nextChar();
-                    return shared_ptr<Token> (new Token(GE_OP, ">="));
-                }else{
-                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
-                }
-            case '=' :
-                if(inputFile.peek() == '='){
-                    nextChar();
-                    return shared_ptr<Token> (new Token(EQ_OP, "=="));
-                }else{
-                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
-                }
-            case '!' :
-                if(inputFile.peek() == '='){
-                    nextChar();
-                    return shared_ptr<Token> (new Token(NE_OP, "!="));
-                }else{
-                    return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
-                }
-            case '.':
-                if(isdigit(inputFile.peek())){
-                    break;
-                }
-                return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
-
-            case ';' :
-            case '{' :
-            case '}' :
-            case ',' :
-            case ':' :
-            case '(' :
-            case ')' :
-            case '[' :
-            case ']' :
-            case '~' :
-            case '*' :
-            case '/' :
-            case '%' :
-            case '^' :
-            case '?' :
-                return make_shared<Token>(static_cast<tokenType>(ch), string(1, ch));
+        if (ch == '/') {
+            int curr = lineno;
+            while (nextChar()) if (curr != lineno) break;
+            continue;
         }
 
-        //Scan for number
-        if(ch == '.' || isdigit(ch)){
-            text = ch; //since 'ch' might change due to 'read_number' function call
-            text += read_number();
-            vector<regex> number_patterns { regex(R"(0)"), //0
-                                            regex(R"([1-9](\d)*)"), //104
-                                            regex(R"((\d)+[Ee][+-]?(\d)+)"),   //123E4
-                                            regex(R"((\d)*\.(\d)+([Ee][+-]?(\d)+)?)"), //x.123
-                                            regex(R"((\d)+\.(\d)*([Ee][+-]?(\d)+)?)")}; //123.x
-            for(const auto & pattern: number_patterns){
-                if(regex_match(text, pattern)){
-                    return make_shared<Token>(CONSTANT, text);
-                }
-            }
+    } // end while
 
-            goto error;
+    string str = string(1, ch);
+    if (str == "+") {
+        nextChar();
+        str += ch;
+        if(str == "++"){
+            return make_shared<Token>(INC_OP, str);
+        }
+        inputFile.unget();
+        str = string(1, ch);
+    }
+
+    if (str == "-") {
+        nextChar();
+        str += ch;
+        if (str == "->") {
+            return make_shared<Token>(PTR_OP, str);
+        }
+        if (str == "--") {
+            return make_shared<Token>(DEC_OP, str);
+        }
+        inputFile.unget();
+        str = string(1, ch);
+    }
+
+    if (str == "&") {
+        nextChar();
+        str += ch;
+        if(str == "&&"){
+            return make_shared<Token>(AND_OP, str);
+        }
+        inputFile.unget();
+        str = string(1, ch);
+    }
+    if (str == "|") {
+        nextChar();
+        str += ch;
+        if(str == "||"){
+            return make_shared<Token>(OR_OP, str);
+        }
+        inputFile.unget();
+        str = string(1, ch);
+    }
+    if (str == "<") {
+        nextChar();
+        str += ch;
+        if(str == "<="){
+            return make_shared<Token>(LE_OP, str);
+        }
+        inputFile.unget();
+        str = string(1, ch);
+
+    }
+    if (str == ">") {
+        nextChar();
+        str += ch;
+        if(str == ">="){
+            return make_shared<Token>(GE_OP, str);
+        }
+        inputFile.unget();
+        str = string(1, ch);
+    }
+    if (str == "=") {
+        nextChar();
+        str += ch;
+        if(str == "=="){
+            return make_shared<Token>(EQ_OP, str);
+        }
+        inputFile.unget();
+        str = string(1, ch);
+    }
+    if (str == "!") {
+        nextChar();
+        str += ch;
+        if(str == "!="){
+            return make_shared<Token>(NE_OP, str);
+        }
+        inputFile.unget();
+    }
+    inputFile.unget();
+    nextChar();
+
+    if(ch==';' || ch=='{' || ch=='}' || ch==',' || ch==':' || ch==';' || ch=='(' ||
+            ch==')' || ch=='/' || ch=='=' || ch=='[' || ch==']' || ch=='~' || ch=='&' || ch=='*' ||
+            ch=='%' ||ch=='^' ||ch=='?' ){
+        return shared_ptr<Token>
+                (new Token(static_cast<tokenType>(ch), string(1, ch)));
+    }
+
+    if ((ch >= '0' && ch <= '9') || ch == '-' || ch == '+' || ch == '.') {
+        string num = string(1, ch);
+        while (nextChar()) {
+            if ((ch >= '0' && ch <= '9') || ch == 'e' || ch == 'E' || ch == '.')
+            {
+                num += ch;
+            }
+            else {
+                break;
+            }
+        }
+        inputFile.unget();
+        if (num == ".") {
+            return shared_ptr<Token>
+                    (new Token(static_cast<tokenType>('.'), num));
         }
 
-        //Scan for Char
-        if(ch == '\''){
-            text = read_char();
-            string literal_char = '\'' + text + '\'';
-            regex char_pattern(R"(\'[^\']\')");
+    if(regex_match(num, regex(R"(0)")) ||
+            regex_match(num, regex(R"([1-9](\d)*)"))  ||
+            regex_match(num, regex(R"((\d)+[Ee][+-]?(\d)+)"))  ||
+            regex_match(num, regex(R"((\d)*\.(\d)+([Ee][+-]?(\d)+)?)")) ||
+            regex_match(num, regex(R"((\d)+\.(\d)*([Ee][+-]?(\d)+)?)")) ){
+        return make_shared<Token>(CONSTANT, num);
+    }
+        return make_shared<Token>(ERROR, num);
+    }
 
-            if(regex_match(literal_char, char_pattern)){
-                return make_shared<Token>(CONSTANT, text);
-            }
-
-            goto error;
-        }
-
-        //Scan for String
-        if(ch == '\"'){
-            text = read_string();
-            string literal_string = "\"" + text + "\"";
-            regex str_pattern(R"(\"[^\"]*\")");
-
-            if(regex_match(literal_string, str_pattern)){
-                return make_shared<Token>(STRING_LITERAL, text);
-            }
-
-            goto error;
-        }
-
-        //Scan for words
-        if(isalpha(ch)){
-            text = ch;
-            text += read_word();
-            regex word_pattern(R"(\w(\w|\d)*)");
-            //Check if token is valid word
-            if(regex_match(text, word_pattern)){
-                shared_ptr<Token> token = symTab.lookupToken(text);
-                //If token not exists at symbol table
-                if(token == nullptr){
-                    shared_ptr<Token> var_token(new varToken(text));
-                    var_token->add_line(lineno);
-                    token = var_token;
-                    symTab.insertToken(text, token);
+    // handle words:
+    if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || ch == '_') {
+        string word = string(1, ch);
+        while (nextChar()) {
+            bool flag = false;
+            int tok_temp = 0;
+            if((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9') || ch == '_')
+            flag = true;
+            if (!flag) {
+                shared_ptr<Token> new_token;
+                new_token = symTab.lookupToken(word);
+                tok_temp++;
+                if (new_token == nullptr) {
+                    tok_temp++;
+                    new_token = make_shared<varToken>(word);
+                    symTab.insertToken(word, new_token);
                 }
-                else if(token->getType() == IDENTIFIER){
-                    token->add_line(lineno);
-                }
-
-                return token;
+                new_token->add_line(lineno);
+                if(tok_temp<0) return new_token;
+                inputFile.unget();
+                return new_token;
             }
+            word += ch;
         }
     }
 
-    //We reached the end of the file, no more tokens
-    return nullptr;
+    if (ch == '\'') {
+        string c = string(1, ch);
+        regex reg("\'[^\']\'");
+        nextChar();
+        c+=ch;
+        nextChar();
+//        char a = '\'';
+        c+=ch;
+            return make_shared<Token>(CONSTANT, c.substr(1,c.length() - 2));
+    }
 
-    error:
-    return make_shared<Token>(ERROR, text);
+    if (ch == '"') {
+        string str = string(1, ch);
+        regex reg("\"[^\"]*\"");
+        nextChar();
+        while (ch != '"') {
+            str += ch; // "abc
+            nextChar();
+        }
+            return make_shared<Token>(STRING_LITERAL, str.substr(1, str.length() - 1));
+    }
+    return nullptr;
 }

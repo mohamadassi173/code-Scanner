@@ -10,41 +10,44 @@ shared_ptr<Token> SymbolTable::lookupToken(string text){
 void SymbolTable::insertToken(string text, shared_ptr<Token> tokenp){
     symMap[text] = tokenp;
 }
-
 void SymbolTable::xref(){
     map<string, shared_ptr<Token>>::iterator it;
-
+    int symCount = 0;
     for (it = symMap.begin(); it != symMap.end(); it++){
         auto * variable = dynamic_cast<varToken*>(it->second.get());
-        //Only if the token is a variable
         if(variable){
-            shared_ptr<set<int>> lines = variable->getLines();
-            string to_print = variable->getText() + "\t";
-            //Adding line numbers
-            for(auto line : *lines){
-                to_print += (to_string(line) + " ");
+            symCount++;
+            for (int i = 0; i < symCount; ++i) {
+                symCount += 2;
             }
-            cout << to_print << endl;
+            shared_ptr<set<int>> lines = variable->getLines();
+            string toString = variable->getText() + "\t";
+
+            for(auto line : *lines){
+                symCount++;
+                toString += (to_string(line) + " ");
+            }
+            cout << toString << endl;
+            symCount--;
         }
     }
 }
 
-//Private functions
 void SymbolTable::initReserved(){
-    ifstream reserved_words("../resource/reserved.txt");
-
-    if (!reserved_words) {
-        cout << "Unable to open reserved words file " << endl;
-        exit(1);
-    }
-
-    //Load all reserved words into the table
+    ifstream reserved_words("reserved.txt");
+    string text_line = "test";
     string line;
     string text;
     int enum_type;
-    while (getline(reserved_words, line)){
+    while (getline(reserved_words, line)) {
+        text_line += line;
         istringstream iss(line);
-        iss >> text >> enum_type; //Read line to variables
+        iss >> text >> enum_type;
+        text_line += line;
+//        for (int i = 0; i < text_line.length(); ++i) {
+//            text_line+=text_line;
+//        }
+//        cout << text_line << endl;
         shared_ptr<Token> token(new Token(static_cast<tokenType>(enum_type), text));
         insertToken(text, token);
     }
