@@ -1,12 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/code_Scanner.dir/main.cpp.obj"
-  "CMakeFiles/code_Scanner.dir/scanner.cpp.obj"
-  "CMakeFiles/code_Scanner.dir/symtab.cpp.obj"
-  "CMakeFiles/code_Scanner.dir/token.cpp.obj"
-  "code_Scanner.exe"
-  "code_Scanner.exe.manifest"
+  "CMakeFiles/code_Scanner.dir/main.cpp.o"
+  "CMakeFiles/code_Scanner.dir/scanner.cpp.o"
+  "CMakeFiles/code_Scanner.dir/symtab.cpp.o"
+  "CMakeFiles/code_Scanner.dir/token.cpp.o"
+  "code_Scanner"
   "code_Scanner.pdb"
-  "libcode_Scanner.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
